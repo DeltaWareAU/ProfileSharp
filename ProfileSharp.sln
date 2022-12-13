@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfileSharp", "src\ProfileSharp\ProfileSharp.csproj", "{40CFCECC-EFCE-4329-B3E5-6787FDAC6AEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfileSharp.AspNetCore", "src\ProfileSharp.AspNetCore\ProfileSharp.AspNetCore.csproj", "{2E5A0601-0F33-463E-964C-0F5CA8E71F7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40CFCECC-EFCE-4329-B3E5-6787FDAC6AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40CFCECC-EFCE-4329-B3E5-6787FDAC6AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40CFCECC-EFCE-4329-B3E5-6787FDAC6AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40CFCECC-EFCE-4329-B3E5-6787FDAC6AEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E5A0601-0F33-463E-964C-0F5CA8E71F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E5A0601-0F33-463E-964C-0F5CA8E71F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E5A0601-0F33-463E-964C-0F5CA8E71F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E5A0601-0F33-463E-964C-0F5CA8E71F7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4ED0E3E4-887F-46A9-9155-BADD240FCA4B}
+	EndGlobalSection
+EndGlobal
