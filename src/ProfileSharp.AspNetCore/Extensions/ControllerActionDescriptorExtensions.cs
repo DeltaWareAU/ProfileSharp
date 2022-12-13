@@ -11,22 +11,22 @@ namespace Microsoft.AspNetCore.Mvc.Controllers
 
         public static bool DoNotProfile(this ControllerActionDescriptor actionDescriptor)
         {
-            if (actionDescriptor.ControllerTypeInfo.HasAttribute<DoNotProfileAttribute>())
+            if (actionDescriptor.ControllerTypeInfo.HasAttribute<DisableProfileSharpAttribute>())
             {
                 return true;
             }
 
-            return actionDescriptor.MethodInfo.HasAttribute<DoNotProfileAttribute>();
+            return actionDescriptor.MethodInfo.HasAttribute<DisableProfileSharpAttribute>();
         }
 
         public static bool Profile(this ControllerActionDescriptor actionDescriptor)
         {
-            if (actionDescriptor.ControllerTypeInfo.HasAttribute<ProfileAttribute>())
+            if (actionDescriptor.ControllerTypeInfo.HasAttribute<EnableProfileSharpAttribute>())
             {
                 return true;
             }
 
-            return actionDescriptor.MethodInfo.HasAttribute<ProfileAttribute>();
+            return actionDescriptor.MethodInfo.HasAttribute<EnableProfileSharpAttribute>();
         }
     }
 }

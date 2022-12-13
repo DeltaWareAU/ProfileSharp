@@ -1,20 +1,20 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using ProfileSharp.Attributes;
-using ProfileSharp.Profilers.Wrappers;
+﻿using ProfileSharp.Attributes;
+using ProfileSharp.Wrappers;
 using System;
 
-namespace ProfileSharp.Extensions
+// ReSharper disable once CheckNamespace
+namespace Microsoft.Extensions.DependencyInjection
 {
     internal static class ServiceDescriptorExtensions
     {
         public static bool IsProfilingEnabled(this ServiceDescriptor descriptor)
         {
-            if (descriptor.ServiceType.HasAttribute<ProfileAttribute>())
+            if (descriptor.ServiceType.HasAttribute<EnableProfileSharpAttribute>())
             {
                 return true;
             }
 
-            if (descriptor.ServiceType.AnyMethodHasAttribute<ProfileAttribute>())
+            if (descriptor.ServiceType.AnyMethodHasAttribute<EnableProfileSharpAttribute>())
             {
                 return true;
             }
@@ -24,12 +24,12 @@ namespace ProfileSharp.Extensions
                 return false;
             }
 
-            if (descriptor.ImplementationType.HasAttribute<ProfileAttribute>())
+            if (descriptor.ImplementationType.HasAttribute<EnableProfileSharpAttribute>())
             {
                 return true;
             }
 
-            if (descriptor.ImplementationType.AnyMethodHasAttribute<ProfileAttribute>())
+            if (descriptor.ImplementationType.AnyMethodHasAttribute<EnableProfileSharpAttribute>())
             {
                 return true;
             }
