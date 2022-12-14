@@ -1,4 +1,5 @@
 ﻿using ProfileSharp.Execution;
+using ProfileSharp.Execution.Scope;
 using ProfileSharp.Profiling.Store;
 using System;
 using System.Collections.Generic;
@@ -31,13 +32,18 @@ namespace ProfileSharp.Profiling.Scope
         {
             _invocationStopwatch.Stop();
 
-            ExecutionContext executionContext = new ExecutionContext
+            if (_steps.Count == 0)
             {
-                Steps = _steps.OrderBy(s => s.TimeStamp).ToArray(),
+                return;
+            }
+
+            ExecutionScopeContext executionScopeContext = new ExecutionScopeContext
+            {
+                Steps = _steps.OrderBy(s => s.UtcTimeStamp).ToArray(),
                 ExecutionTime = _invocationStopwatch.Elapsed
             };
 
-            await _profilingStore.StoreAsync(executionContext);
+            await _profilingStore.StoreAsync(executionScopeContext);
         }
     }
 }

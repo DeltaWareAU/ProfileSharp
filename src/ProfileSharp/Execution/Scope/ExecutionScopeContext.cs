@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProfileSharp.Execution
+namespace ProfileSharp.Execution.Scope
 {
-    internal sealed class ExecutionContext : IExecutionContext
+    public class ExecutionScopeContext : IExecutionScopeContext
     {
         public IReadOnlyCollection<IExecutionStep> Steps { get; set; } = null!;
 

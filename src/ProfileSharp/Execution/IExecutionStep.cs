@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ProfileSharp.Execution.Context;
+using System;
 
 namespace ProfileSharp.Execution
 {
     public interface IExecutionStep
     {
-        string AssemblyQualifiedName { get; }
+        IExecutionContext ExecutionContext { get; }
 
-        string MethodName { get; }
+        IExecutedContext ExecutedContext { get; }
 
-        IReadOnlyDictionary<string, object> Arguments { get; }
-
-        object? ReturnedValue { get; }
-
-        Exception? EncounteredException { get; }
-
-        DateTime TimeStamp { get; }
+        DateTime UtcTimeStamp { get; }
 
         TimeSpan ExecutionTime { get; }
     }

@@ -9,6 +9,7 @@ namespace ProfileSharp.Profiling.Configuration
         IServiceCollection Services { get; }
 
         void UseStore<T>() where T : class, IProfilingStore;
+        void UseStore<T>(T instance) where T : class, IProfilingStore;
 
         void UseStore<T>(Func<IServiceProvider, T> implementationFactory) where T : class, IProfilingStore;
     }

@@ -1,41 +1,32 @@
 ﻿using Castle.DynamicProxy;
 using ProfileSharp.Execution;
+using ProfileSharp.Execution.Context;
+using ProfileSharp.Interception;
 using ProfileSharp.Profiling.Scope;
 using System;
 using System.Diagnostics;
 
 namespace ProfileSharp.Profiling
 {
-    internal sealed class TypeProfiler : IInterceptor
+    internal sealed class TypeProfilingInterceptor : TypeInterceptor
     {
         private readonly Stopwatch _invocationStopwatch = new Stopwatch();
 
         private readonly IProfilingScope _profilingScope;
 
-        public TypeProfiler(IProfilingScope profilingScope)
+        public TypeProfilingInterceptor(IProfilingScope profilingScope, Type interceptedType) : base(interceptedType)
         {
             _profilingScope = profilingScope;
         }
 
-        public void Intercept(IInvocation invocation)
+        protected override void OnIntercept(IExecutionContext context, IInvocation invocation)
         {
-            if (invocation.IsProfilingDisable())
-            {
-                invocation.Proceed();
-
-                return;
-            }
-
-            if (invocation.TargetType.AssemblyQualifiedName == null)
-            {
-                throw new NotSupportedException($"The target type {invocation.TargetType.Name} is not supported by profile sharp as it does not have a {nameof(Type.AssemblyQualifiedName)}.");
-            }
+            ExecutedContext executedContext = new ExecutedContext();
 
             ExecutionStep executionState = new ExecutionStep
             {
-                AssemblyQualifiedName = invocation.TargetType.AssemblyQualifiedName,
-                MethodName = invocation.Method.Name,
-                Arguments = invocation.GetArgumentDictionary()
+                ExecutionContext = context,
+                ExecutedContext = executedContext
             };
 
             try
@@ -43,10 +34,12 @@ namespace ProfileSharp.Profiling
                 _invocationStopwatch.Start();
 
                 invocation.Proceed();
+
+                executedContext.ReturnValue = invocation.ReturnValue;
             }
             catch (Exception e)
             {
-                executionState.EncounteredException = e;
+                executedContext.EncounteredException = e;
 
                 throw;
             }
@@ -55,7 +48,6 @@ namespace ProfileSharp.Profiling
                 _invocationStopwatch.Stop();
 
                 executionState.ExecutionTime = _invocationStopwatch.Elapsed;
-                executionState.ReturnedValue = invocation.ReturnValue;
 
                 _profilingScope.RegisterStep(executionState);
             }

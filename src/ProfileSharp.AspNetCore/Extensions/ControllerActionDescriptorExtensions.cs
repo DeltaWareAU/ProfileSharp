@@ -6,27 +6,15 @@ namespace Microsoft.AspNetCore.Mvc.Controllers
 {
     internal static class ControllerActionDescriptorExtensions
     {
-        public static bool CanProfile(this ControllerActionDescriptor actionDescriptor)
-            => DoNotProfile(actionDescriptor) || !Profile(actionDescriptor);
+        public static bool IsProfileSharpEnabled(this ControllerActionDescriptor actionDescriptor)
+            => !IsDisabled(actionDescriptor) && IsEnabled(actionDescriptor);
 
-        public static bool DoNotProfile(this ControllerActionDescriptor actionDescriptor)
-        {
-            if (actionDescriptor.ControllerTypeInfo.HasAttribute<DisableProfileSharpAttribute>())
-            {
-                return true;
-            }
+        private static bool IsDisabled(ControllerActionDescriptor actionDescriptor)
+            => actionDescriptor.ControllerTypeInfo.HasAttribute<DisableProfileSharpAttribute>() ||
+               actionDescriptor.MethodInfo.HasAttribute<DisableProfileSharpAttribute>();
 
-            return actionDescriptor.MethodInfo.HasAttribute<DisableProfileSharpAttribute>();
-        }
-
-        public static bool Profile(this ControllerActionDescriptor actionDescriptor)
-        {
-            if (actionDescriptor.ControllerTypeInfo.HasAttribute<EnableProfileSharpAttribute>())
-            {
-                return true;
-            }
-
-            return actionDescriptor.MethodInfo.HasAttribute<EnableProfileSharpAttribute>();
-        }
+        private static bool IsEnabled(ControllerActionDescriptor actionDescriptor)
+            => actionDescriptor.ControllerTypeInfo.HasAttribute<EnableProfileSharpAttribute>() ||
+               actionDescriptor.MethodInfo.HasAttribute<EnableProfileSharpAttribute>();
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProfileSharp.Execution
+namespace ProfileSharp.Execution.Scope
 {
-    public interface IExecutionContext
+    public interface IExecutionScopeContext
     {
         IReadOnlyCollection<IExecutionStep> Steps { get; }
 

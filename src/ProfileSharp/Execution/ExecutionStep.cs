@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ProfileSharp.Execution.Context;
+using System;
 
 namespace ProfileSharp.Execution
 {
-    public sealed class ExecutionStep : IExecutionStep
+    public class ExecutionStep : IExecutionStep
     {
-        public string AssemblyQualifiedName { get; set; } = null!;
-        public string MethodName { get; set; } = null!;
-        public IReadOnlyDictionary<string, object> Arguments { get; set; } = null!;
-        public object? ReturnedValue { get; set; }
-        public DateTime TimeStamp { get; } = DateTime.Now;
+        public IExecutionContext ExecutionContext { get; set; } = null!;
+        public IExecutedContext ExecutedContext { get; set; } = null!;
+
+        public DateTime UtcTimeStamp { get; } = DateTime.UtcNow;
         public TimeSpan ExecutionTime { get; set; }
-        public Exception? EncounteredException { get; set; }
     }
 }

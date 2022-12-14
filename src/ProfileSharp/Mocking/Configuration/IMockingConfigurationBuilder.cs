@@ -9,6 +9,7 @@ namespace ProfileSharp.Mocking.Configuration
         IServiceCollection Services { get; }
 
         void UseStore<T>() where T : class, IMockDataStore;
+        void UseStore<T>(T instance) where T : class, IMockDataStore;
         void UseStore<T>(Func<IServiceProvider, T> implementationFactory) where T : class, IMockDataStore;
     }
 }

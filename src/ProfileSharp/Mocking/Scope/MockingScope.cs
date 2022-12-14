@@ -1,6 +1,7 @@
 ﻿using ProfileSharp.Execution;
+using ProfileSharp.Execution.Context;
+using ProfileSharp.Execution.Scope;
 using ProfileSharp.Mocking.Store;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,32 +12,32 @@ namespace ProfileSharp.Mocking.Scope
     {
         private readonly IMockDataStore _mockDataStore;
 
-        private IExecutionContext? _mockExecutionContext;
+        private IExecutionScopeContext? _mockExecutionContext;
 
         public MockingScope(IMockDataStore mockDataStore)
         {
             _mockDataStore = mockDataStore;
         }
 
-        public async Task InitiateAsync(string assemblyQualifiedName, string methodName, IReadOnlyDictionary<string, object> arguments, CancellationToken cancellationToken = default)
+        public async Task InitiateAsync(IExecutionContext executionContext, CancellationToken cancellationToken = default)
         {
-            _mockExecutionContext = await _mockDataStore.LoadAsync(assemblyQualifiedName, methodName, arguments, cancellationToken);
+            _mockExecutionContext = await _mockDataStore.GetExecutionScopeAsync(executionContext, cancellationToken);
         }
 
-        public bool TryGetMockResponseAsync(string assemblyQualifiedName, string methodName, IReadOnlyDictionary<string, object> arguments, out object? mockResponse)
+        public bool TryGetMockExecutionAsync(IExecutionContext executionContext, out IExecutedContext? executedContext)
         {
-            mockResponse = null;
+            executedContext = null;
 
             // TODO: Arguments need to be matched.
             IExecutionStep? mockExecution = _mockExecutionContext?.Steps
-                .SingleOrDefault(s => s.AssemblyQualifiedName == assemblyQualifiedName && s.MethodName == methodName);
+                .SingleOrDefault(s => s.ExecutionContext == executionContext);
 
             if (mockExecution == null)
             {
                 return false;
             }
 
-            mockResponse = mockExecution.ReturnedValue;
+            executedContext = mockExecution.ExecutedContext;
 
             return true;
         }
