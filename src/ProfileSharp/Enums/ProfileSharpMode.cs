@@ -1,9 +1,6 @@
-﻿using System.Runtime.CompilerServices;
-
-[assembly: InternalsVisibleTo("ProfileSharp.AspNetCore")]
-namespace ProfileSharp.Enums
+﻿namespace ProfileSharp.Enums
 {
-    internal enum ProfileSharpMode
+    public enum ProfileSharpMode
     {
         Disabled,
         Profiling,

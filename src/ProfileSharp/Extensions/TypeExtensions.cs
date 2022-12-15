@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("ProfileSharp.AspNetCore")]
+[assembly: InternalsVisibleTo("ProfileSharp.NServiceBus")]
 // ReSharper disable once CheckNamespace
 namespace System
 {
