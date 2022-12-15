@@ -2,7 +2,7 @@
 using ProfileSharp.Store;
 using System;
 
-namespace ProfileSharp.Configuration.Mocking
+namespace ProfileSharp.Configuration
 {
     public interface IMockingConfigurationBuilder
     {

@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace ProfileSharp.Store.FileStore
 {
-    internal sealed class FileProfilingStore : IProfilingStore
+    internal sealed class ProfilingFileStore : IProfilingStore
     {
+        private readonly JsonSerializer _serializer;
+
         private readonly string _directory;
 
-        public FileProfilingStore(string directory)
+        public ProfilingFileStore(string directory)
         {
             if (string.IsNullOrWhiteSpace(directory))
             {
@@ -20,10 +22,15 @@ namespace ProfileSharp.Store.FileStore
 
             if (!Directory.Exists(directory))
             {
-                throw new DirectoryNotFoundException($"The specified Profiling Store Directory ({directory}) could not be found.");
+                throw new DirectoryNotFoundException($"The specified Directory ({directory}) could not be found.");
             }
 
             _directory = directory;
+
+            _serializer = JsonSerializer.Create(new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All
+            });
         }
 
         public async Task StoreAsync(IExecutionScopeContext scopeContext, CancellationToken cancellationToken = default)
@@ -38,12 +45,7 @@ namespace ProfileSharp.Store.FileStore
 
             try
             {
-                JsonSerializer serializer = JsonSerializer.Create(new JsonSerializerSettings
-                {
-                    TypeNameHandling = TypeNameHandling.All
-                });
-
-                serializer.Serialize(writer, scopeContext);
+                _serializer.Serialize(writer, scopeContext);
 
                 await writer.FlushAsync();
             }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using ProfileSharp.Configuration.Mocking;
-using ProfileSharp.Configuration.Profiling;
+using ProfileSharp.Configuration;
 using ProfileSharp.Extensions;
 using ProfileSharp.Interception.Factory;
 using ProfileSharp.Settings;

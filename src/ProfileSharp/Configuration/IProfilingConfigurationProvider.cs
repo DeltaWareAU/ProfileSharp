@@ -1,4 +1,4 @@
-﻿namespace ProfileSharp.Configuration.Profiling
+﻿namespace ProfileSharp.Configuration
 {
     public interface IProfilingConfigurationProvider : IConfigurationProvider
     {

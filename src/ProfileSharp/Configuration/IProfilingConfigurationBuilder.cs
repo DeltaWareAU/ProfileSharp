@@ -2,7 +2,7 @@
 using ProfileSharp.Store;
 using System;
 
-namespace ProfileSharp.Configuration.Profiling
+namespace ProfileSharp.Configuration
 {
     public interface IProfilingConfigurationBuilder
     {

@@ -1,5 +1,4 @@
-﻿using ProfileSharp.Configuration.Mocking;
-using ProfileSharp.Configuration.Profiling;
+﻿using ProfileSharp.Configuration;
 using System;
 
 namespace ProfileSharp

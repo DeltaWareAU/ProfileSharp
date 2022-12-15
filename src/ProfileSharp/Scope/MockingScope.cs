@@ -30,7 +30,7 @@ namespace ProfileSharp.Scope
 
             // TODO: Arguments need to be matched.
             IExecutionStep? mockExecution = _mockExecutionContext?.Steps
-                .SingleOrDefault(s => s.ExecutionContext == executionContext);
+                .SingleOrDefault(s => s.ExecutionContext.Equals(executionContext));
 
             if (mockExecution == null)
             {

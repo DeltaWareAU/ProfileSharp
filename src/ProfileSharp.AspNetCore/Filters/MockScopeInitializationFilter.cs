@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
+using ProfileSharp.AspNetCore.Execution;
 using ProfileSharp.Enums;
-using ProfileSharp.Execution.Context;
 using ProfileSharp.Scope;
 using ProfileSharp.Settings;
 using System;
@@ -40,11 +40,13 @@ namespace ProfileSharp.AspNetCore.Filters
                 await next.Invoke();
             }
 
-            var executionContext = new ExecutionContext()
+            ControllerExecutionContext executionContext = new ControllerExecutionContext
             {
                 AssemblyQualifiedName = actionDescriptor.ControllerTypeInfo.AssemblyQualifiedName,
                 MethodName = actionDescriptor.MethodInfo.Name,
-                Arguments = new Dictionary<string, object>(context.ActionArguments)
+                Arguments = new Dictionary<string, object>(context.ActionArguments),
+                RequestPath = context.HttpContext.Request.Path,
+                RequestMethod = context.HttpContext.Request.Method,
             };
 
             await _profilingScope.InitiateAsync(executionContext);

@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using ProfileSharp.Profiling.Configuration;
 
 namespace WebApplication1
 {
@@ -28,11 +27,20 @@ namespace WebApplication1
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });
             });
 
-            services.AddProfileSharp()
-                .AddProfiling(o =>
+            services.AddProfileSharp(o =>
+            {
+#if PROFILING
+                o.AddProfiling(o =>
                 {
                     o.UseFileStore(@"D:\#temp\ProfilingStore");
                 });
+#elif MOCKING
+                o.AddMocking(o =>
+                {
+                    o.UseFileStore(@"D:\#temp\ProfilingStore");
+                });
+#endif
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +64,14 @@ namespace WebApplication1
                 endpoints.MapControllers();
             });
 
-            app.UseProfileSharp(c => c.UseProfiling());
+            app.UseProfileSharp(c =>
+            {
+#if PROFILING
+                c.UseProfiling();
+#elif MOCKING
+                c.UseMocking();
+#endif
+            });
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace ProfileSharp.Configuration.Mocking
+﻿namespace ProfileSharp.Configuration
 {
     public interface IMockingConfigurationProvider : IConfigurationProvider
     {

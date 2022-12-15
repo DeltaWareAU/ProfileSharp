@@ -5,7 +5,7 @@ using ProfileSharp.Store;
 using System;
 using System.Linq;
 
-namespace ProfileSharp.Configuration.Profiling
+namespace ProfileSharp.Configuration
 {
     internal sealed class ProfilingConfigurationBuilder : IProfilingConfigurationBuilder
     {

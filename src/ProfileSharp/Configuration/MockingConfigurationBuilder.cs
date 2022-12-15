@@ -5,7 +5,7 @@ using ProfileSharp.Store;
 using System;
 using System.Linq;
 
-namespace ProfileSharp.Configuration.Mocking
+namespace ProfileSharp.Configuration
 {
     internal sealed class MockingConfigurationBuilder : IMockingConfigurationBuilder
     {

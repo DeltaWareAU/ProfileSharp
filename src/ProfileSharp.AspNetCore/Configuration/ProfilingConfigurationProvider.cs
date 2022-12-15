@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using ProfileSharp.AspNetCore.Filters;
-using ProfileSharp.Configuration.Profiling;
+using ProfileSharp.Configuration;
 
-// ReSharper disable once CheckNamespace
 namespace ProfileSharp.AspNetCore.Configuration
 {
     public class ProfilingConfigurationProvider : IProfilingConfigurationProvider

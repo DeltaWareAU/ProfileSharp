@@ -14,23 +14,41 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Mocking|Any CPU = Mocking|Any CPU
+		Profiling|Any CPU = Profiling|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{40CFCECC-EFCE-4329-B3E5-6787FDAC6AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{40CFCECC-EFCE-4329-B3E5-6787FDAC6AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40CFCECC-EFCE-4329-B3E5-6787FDAC6AEB}.Mocking|Any CPU.ActiveCfg = Debug|Any CPU
+		{40CFCECC-EFCE-4329-B3E5-6787FDAC6AEB}.Mocking|Any CPU.Build.0 = Debug|Any CPU
+		{40CFCECC-EFCE-4329-B3E5-6787FDAC6AEB}.Profiling|Any CPU.ActiveCfg = Debug|Any CPU
+		{40CFCECC-EFCE-4329-B3E5-6787FDAC6AEB}.Profiling|Any CPU.Build.0 = Debug|Any CPU
 		{40CFCECC-EFCE-4329-B3E5-6787FDAC6AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40CFCECC-EFCE-4329-B3E5-6787FDAC6AEB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E5A0601-0F33-463E-964C-0F5CA8E71F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2E5A0601-0F33-463E-964C-0F5CA8E71F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E5A0601-0F33-463E-964C-0F5CA8E71F7A}.Mocking|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E5A0601-0F33-463E-964C-0F5CA8E71F7A}.Mocking|Any CPU.Build.0 = Debug|Any CPU
+		{2E5A0601-0F33-463E-964C-0F5CA8E71F7A}.Profiling|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E5A0601-0F33-463E-964C-0F5CA8E71F7A}.Profiling|Any CPU.Build.0 = Debug|Any CPU
 		{2E5A0601-0F33-463E-964C-0F5CA8E71F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E5A0601-0F33-463E-964C-0F5CA8E71F7A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A6BF39B3-4A8E-4A95-8CE2-DBD47BE894E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A6BF39B3-4A8E-4A95-8CE2-DBD47BE894E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6BF39B3-4A8E-4A95-8CE2-DBD47BE894E5}.Mocking|Any CPU.ActiveCfg = Mocking|Any CPU
+		{A6BF39B3-4A8E-4A95-8CE2-DBD47BE894E5}.Mocking|Any CPU.Build.0 = Mocking|Any CPU
+		{A6BF39B3-4A8E-4A95-8CE2-DBD47BE894E5}.Profiling|Any CPU.ActiveCfg = Profiling|Any CPU
+		{A6BF39B3-4A8E-4A95-8CE2-DBD47BE894E5}.Profiling|Any CPU.Build.0 = Profiling|Any CPU
 		{A6BF39B3-4A8E-4A95-8CE2-DBD47BE894E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6BF39B3-4A8E-4A95-8CE2-DBD47BE894E5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{765A42CA-7756-4A56-8D89-02C034FF1381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{765A42CA-7756-4A56-8D89-02C034FF1381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{765A42CA-7756-4A56-8D89-02C034FF1381}.Mocking|Any CPU.ActiveCfg = Debug|Any CPU
+		{765A42CA-7756-4A56-8D89-02C034FF1381}.Mocking|Any CPU.Build.0 = Debug|Any CPU
+		{765A42CA-7756-4A56-8D89-02C034FF1381}.Profiling|Any CPU.ActiveCfg = Debug|Any CPU
+		{765A42CA-7756-4A56-8D89-02C034FF1381}.Profiling|Any CPU.Build.0 = Debug|Any CPU
 		{765A42CA-7756-4A56-8D89-02C034FF1381}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{765A42CA-7756-4A56-8D89-02C034FF1381}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
