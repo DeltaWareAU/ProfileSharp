@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ProfileSharp.Profiling.Store
+namespace ProfileSharp.Store
 {
     public interface IProfilingStore
     {

@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ProfileSharp.Mocking.Scope
+namespace ProfileSharp.Scope
 {
     public interface IMockingScope
     {

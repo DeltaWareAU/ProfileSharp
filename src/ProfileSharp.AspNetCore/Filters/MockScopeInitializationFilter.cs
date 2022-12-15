@@ -2,20 +2,20 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using ProfileSharp.Enums;
 using ProfileSharp.Execution.Context;
-using ProfileSharp.Mocking.Scope;
+using ProfileSharp.Scope;
 using ProfileSharp.Settings;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ProfileSharp.AspNetCore.Mocking
+namespace ProfileSharp.AspNetCore.Filters
 {
-    internal sealed class ControllerMockInitializer : IAsyncActionFilter
+    internal sealed class MockScopeInitializationFilter : IAsyncActionFilter
     {
         private readonly IMockingScope _profilingScope;
         private readonly ProfileSharpSettings _settings;
 
-        public ControllerMockInitializer(IMockingScope profilingScope, ProfileSharpSettings settings)
+        public MockScopeInitializationFilter(IMockingScope profilingScope, ProfileSharpSettings settings)
         {
             _profilingScope = profilingScope;
             _settings = settings;

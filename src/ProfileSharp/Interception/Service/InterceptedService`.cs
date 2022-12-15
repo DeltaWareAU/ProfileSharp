@@ -3,28 +3,25 @@ using System.Threading.Tasks;
 
 namespace ProfileSharp.Interception.Service
 {
-    internal sealed class InterceptedService<T> : IInterceptedService, IAsyncDisposable, IDisposable
+    internal sealed class InterceptedService<T> : IInterceptedService, IAsyncDisposable
     {
-        public object Instance { get; }
+        public object ServiceInstance { get; }
 
-        public InterceptedService(T instance)
+        public InterceptedService(T serviceInstance)
         {
-            Instance = instance ?? throw new ArgumentNullException(nameof(instance));
-        }
-
-        public void Dispose()
-        {
-            if (Instance is IDisposable disposable)
-            {
-                disposable.Dispose();
-            }
+            ServiceInstance = serviceInstance ?? throw new ArgumentNullException(nameof(serviceInstance));
         }
 
         public async ValueTask DisposeAsync()
         {
-            if (Instance is IAsyncDisposable asyncDisposable)
+            switch (ServiceInstance)
             {
-                await asyncDisposable.DisposeAsync();
+                case IAsyncDisposable asyncDisposable:
+                    await asyncDisposable.DisposeAsync();
+                    break;
+                case IDisposable disposable:
+                    disposable.Dispose();
+                    break;
             }
         }
     }

@@ -5,15 +5,15 @@ using ProfileSharp.AspNetCore.Execution;
 using ProfileSharp.Enums;
 using ProfileSharp.Execution;
 using ProfileSharp.Execution.Context;
-using ProfileSharp.Profiling.Scope;
+using ProfileSharp.Scope;
 using ProfileSharp.Settings;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace ProfileSharp.AspNetCore.Profiling
+namespace ProfileSharp.AspNetCore.Filters
 {
-    internal sealed class ControllerProfiler : IActionFilter, IExceptionFilter, IDisposable
+    internal sealed class ProfilingFilter : IActionFilter, IExceptionFilter, IDisposable
     {
         private readonly Stopwatch _invocationStopwatch = new Stopwatch();
 
@@ -24,7 +24,7 @@ namespace ProfileSharp.AspNetCore.Profiling
 
         private ExecutedContext? _executedContext;
 
-        public ControllerProfiler(IProfilingScope profilingScope, ProfileSharpSettings settings)
+        public ProfilingFilter(IProfilingScope profilingScope, ProfileSharpSettings settings)
         {
             _profilingScope = profilingScope;
             _settings = settings;

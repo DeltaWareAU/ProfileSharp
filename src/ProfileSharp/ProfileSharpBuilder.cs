@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using ProfileSharp.Configuration.Mocking;
+using ProfileSharp.Configuration.Profiling;
 using ProfileSharp.Extensions;
 using ProfileSharp.Interception.Factory;
-using ProfileSharp.Mocking.Configuration;
-using ProfileSharp.Profiling.Configuration;
 using ProfileSharp.Settings;
 using System;
 using System.Linq;
@@ -51,7 +51,7 @@ namespace ProfileSharp
 
         private static void CreateServiceInterceptors(IServiceCollection services)
         {
-            var interceptServices = services.Where(s => s.IsProfilingEnabled()).ToArray();
+            var interceptServices = services.Where(s => s.IsProfileSharpEnabled()).ToArray();
 
             foreach (ServiceDescriptor interceptService in interceptServices)
             {

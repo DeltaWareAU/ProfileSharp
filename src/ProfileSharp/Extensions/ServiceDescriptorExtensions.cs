@@ -6,7 +6,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     internal static class ServiceDescriptorExtensions
     {
-        public static bool IsProfilingEnabled(this ServiceDescriptor descriptor)
+        public static bool IsProfileSharpEnabled(this ServiceDescriptor descriptor)
         {
             if (descriptor.ServiceType.HasAttribute<EnableProfileSharpAttribute>())
             {

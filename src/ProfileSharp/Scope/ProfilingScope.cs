@@ -1,13 +1,13 @@
 ﻿using ProfileSharp.Execution;
 using ProfileSharp.Execution.Scope;
-using ProfileSharp.Profiling.Store;
+using ProfileSharp.Store;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProfileSharp.Profiling.Scope
+namespace ProfileSharp.Scope
 {
     internal sealed class ProfilingScope : IProfilingScope, IAsyncDisposable
     {

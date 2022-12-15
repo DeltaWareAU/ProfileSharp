@@ -1,30 +1,36 @@
 ﻿using Newtonsoft.Json;
 using ProfileSharp.Execution.Scope;
-using ProfileSharp.Profiling.Store;
 using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WebApplication1
+namespace ProfileSharp.Store.FileStore
 {
-    public class FileProfilingStore : IProfilingStore
+    internal sealed class FileProfilingStore : IProfilingStore
     {
-        private readonly string _path;
+        private readonly string _directory;
 
-        public FileProfilingStore(string path)
+        public FileProfilingStore(string directory)
         {
-            if (!Directory.Exists(path))
+            if (string.IsNullOrWhiteSpace(directory))
             {
-                throw new DirectoryNotFoundException($"The specified Profiling Store Directory ({path}) could not be found.");
+                throw new ArgumentException("Cannot be null, empty or whitespace", nameof(directory));
             }
 
-            _path = path;
+            if (!Directory.Exists(directory))
+            {
+                throw new DirectoryNotFoundException($"The specified Profiling Store Directory ({directory}) could not be found.");
+            }
+
+            _directory = directory;
         }
 
         public async Task StoreAsync(IExecutionScopeContext scopeContext, CancellationToken cancellationToken = default)
         {
-            string filePath = _path + $"\\profile_{Guid.NewGuid()}.json";
+            string fileName = $"profile_{Guid.NewGuid()}.json";
+
+            string filePath = Path.Join(_directory, fileName);
 
             FileStream fileStream = new FileStream(filePath, FileMode.Create);
 

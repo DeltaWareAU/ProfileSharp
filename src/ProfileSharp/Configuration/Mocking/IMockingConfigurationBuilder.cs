@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ProfileSharp.Mocking.Store;
+using ProfileSharp.Store;
 using System;
 
-namespace ProfileSharp.Mocking.Configuration
+namespace ProfileSharp.Configuration.Mocking
 {
     public interface IMockingConfigurationBuilder
     {

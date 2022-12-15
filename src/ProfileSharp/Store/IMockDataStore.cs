@@ -3,7 +3,7 @@ using ProfileSharp.Execution.Scope;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ProfileSharp.Mocking.Store
+namespace ProfileSharp.Store
 {
     public interface IMockDataStore
     {

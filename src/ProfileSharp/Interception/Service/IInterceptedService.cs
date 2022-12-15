@@ -2,6 +2,6 @@
 {
     internal interface IInterceptedService
     {
-        object Instance { get; }
+        object ServiceInstance { get; }
     }
 }

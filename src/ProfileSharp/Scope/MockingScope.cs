@@ -1,12 +1,12 @@
 ﻿using ProfileSharp.Execution;
 using ProfileSharp.Execution.Context;
 using ProfileSharp.Execution.Scope;
-using ProfileSharp.Mocking.Store;
+using ProfileSharp.Store;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ProfileSharp.Mocking.Scope
+namespace ProfileSharp.Scope
 {
     internal sealed class MockingScope : IMockingScope
     {

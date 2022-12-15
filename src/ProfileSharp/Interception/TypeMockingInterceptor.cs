@@ -1,10 +1,9 @@
 ﻿using Castle.DynamicProxy;
 using ProfileSharp.Execution.Context;
-using ProfileSharp.Interception;
-using ProfileSharp.Mocking.Scope;
+using ProfileSharp.Scope;
 using System;
 
-namespace ProfileSharp.Mocking
+namespace ProfileSharp.Interception
 {
     internal sealed class TypeMockingInterceptor : TypeInterceptor
     {

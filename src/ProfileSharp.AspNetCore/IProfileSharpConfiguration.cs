@@ -2,9 +2,9 @@
 {
     public interface IProfileSharpConfiguration
     {
-        void EnableProfiling();
+        void UseProfiling();
 
-        void EnableMocking();
+        void UseMocking();
 
         void Disable();
     }

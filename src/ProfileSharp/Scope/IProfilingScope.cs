@@ -1,6 +1,6 @@
 ﻿using ProfileSharp.Execution;
 
-namespace ProfileSharp.Profiling.Scope
+namespace ProfileSharp.Scope
 {
     public interface IProfilingScope
     {

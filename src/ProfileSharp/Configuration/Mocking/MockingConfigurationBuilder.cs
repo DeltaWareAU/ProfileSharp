@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using ProfileSharp.Mocking.Scope;
-using ProfileSharp.Mocking.Store;
+using ProfileSharp.Scope;
+using ProfileSharp.Store;
 using System;
 using System.Linq;
 
-namespace ProfileSharp.Mocking.Configuration
+namespace ProfileSharp.Configuration.Mocking
 {
     internal sealed class MockingConfigurationBuilder : IMockingConfigurationBuilder
     {
@@ -33,6 +33,11 @@ namespace ProfileSharp.Mocking.Configuration
             }
 
             Services.TryAddScoped<IMockingScope, MockingScope>();
+
+            foreach (IMockingConfigurationProvider configuration in ConfigurationProviderHelper.GetConfigurationProviders<IMockingConfigurationProvider>())
+            {
+                configuration.Configure(Services);
+            }
         }
     }
 }

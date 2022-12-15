@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using ProfileSharp.Mocking.Configuration;
 using ProfileSharp.Profiling.Configuration;
 
 namespace WebApplication1
@@ -32,8 +31,7 @@ namespace WebApplication1
             services.AddProfileSharp()
                 .AddProfiling(o =>
                 {
-                    o.UseStore(new FileProfilingStore(@"D:\#temp\ProfilingStore"));
-                    o.ProfileControllers();
+                    o.UseFileStore(@"D:\#temp\ProfilingStore");
                 });
         }
 
@@ -58,8 +56,7 @@ namespace WebApplication1
                 endpoints.MapControllers();
             });
 
-            app.UseProfileSharp()
-                .EnableProfiling();
+            app.UseProfileSharp(c => c.UseProfiling());
         }
     }
 }

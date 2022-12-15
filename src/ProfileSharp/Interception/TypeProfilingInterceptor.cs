@@ -1,12 +1,11 @@
 ﻿using Castle.DynamicProxy;
 using ProfileSharp.Execution;
 using ProfileSharp.Execution.Context;
-using ProfileSharp.Interception;
-using ProfileSharp.Profiling.Scope;
+using ProfileSharp.Scope;
 using System;
 using System.Diagnostics;
 
-namespace ProfileSharp.Profiling
+namespace ProfileSharp.Interception
 {
     internal sealed class TypeProfilingInterceptor : TypeInterceptor
     {

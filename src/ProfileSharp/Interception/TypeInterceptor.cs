@@ -15,7 +15,7 @@ namespace ProfileSharp.Interception
 
         public void Intercept(IInvocation invocation)
         {
-            if (invocation.IsProfileSharpDisable())
+            if (invocation.IsProfileSharpDisabled())
             {
                 invocation.Proceed();
 

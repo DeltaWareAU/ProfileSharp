@@ -21,8 +21,6 @@ namespace WebApplication1
 
         public WeatherForecast Get()
         {
-            var rng = new Random();
-
             return new WeatherForecast
             {
                 Date = DateTime.Now,
@@ -38,7 +36,6 @@ namespace WebApplication1
                 throw new ArgumentException("Days cannot be greater than 7");
             }
 
-            var rng = new Random();
             return Enumerable.Range(1, days).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),

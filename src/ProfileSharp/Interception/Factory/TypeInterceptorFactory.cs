@@ -2,8 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using ProfileSharp.Enums;
 using ProfileSharp.Interception.Service;
-using ProfileSharp.Mocking;
-using ProfileSharp.Profiling;
 using ProfileSharp.Settings;
 using System;
 
@@ -28,7 +26,7 @@ namespace ProfileSharp.Interception.Factory
 
             return _settings.Mode switch
             {
-                ProfileSharpMode.Disabled => serviceWrapper.Instance,
+                ProfileSharpMode.Disabled => serviceWrapper.ServiceInstance,
                 ProfileSharpMode.Profiling => CreateInterceptor<TypeProfilingInterceptor>(serviceWrapper, definitionType),
                 ProfileSharpMode.Mocking => CreateInterceptor<TypeMockingInterceptor>(serviceWrapper, definitionType),
                 _ => throw new ArgumentOutOfRangeException()
@@ -41,10 +39,10 @@ namespace ProfileSharp.Interception.Factory
 
             if (definitionType.IsInterface)
             {
-                return _proxyGenerator.CreateInterfaceProxyWithTarget(interceptor.InterceptedType, serviceWrapper.Instance, interceptor);
+                return _proxyGenerator.CreateInterfaceProxyWithTarget(interceptor.InterceptedType, serviceWrapper.ServiceInstance, interceptor);
             }
 
-            return _proxyGenerator.CreateClassProxyWithTarget(interceptor.InterceptedType, serviceWrapper.Instance, interceptor);
+            return _proxyGenerator.CreateClassProxyWithTarget(interceptor.InterceptedType, serviceWrapper.ServiceInstance, interceptor);
         }
     }
 }

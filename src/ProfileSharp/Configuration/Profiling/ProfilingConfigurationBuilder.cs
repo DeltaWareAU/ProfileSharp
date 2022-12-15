@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using ProfileSharp.Profiling.Scope;
-using ProfileSharp.Profiling.Store;
+using ProfileSharp.Scope;
+using ProfileSharp.Store;
 using System;
 using System.Linq;
 
-namespace ProfileSharp.Profiling.Configuration
+namespace ProfileSharp.Configuration.Profiling
 {
     internal sealed class ProfilingConfigurationBuilder : IProfilingConfigurationBuilder
     {
@@ -17,13 +17,13 @@ namespace ProfileSharp.Profiling.Configuration
         }
 
         public void UseStore<T>() where T : class, IProfilingStore
-            => Services.AddSingleton<IProfilingStore, T>();
+            => Services.AddScoped<IProfilingStore, T>();
 
         public void UseStore<T>(T instance) where T : class, IProfilingStore
             => Services.AddSingleton<IProfilingStore, T>(_ => instance);
 
         public void UseStore<T>(Func<IServiceProvider, T> implementationFactory) where T : class, IProfilingStore
-            => Services.AddSingleton<IProfilingStore, T>(implementationFactory);
+            => Services.AddScoped<IProfilingStore, T>(implementationFactory);
 
         public void Build()
         {
@@ -33,6 +33,11 @@ namespace ProfileSharp.Profiling.Configuration
             }
 
             Services.TryAddScoped<IProfilingScope, ProfilingScope>();
+
+            foreach (IProfilingConfigurationProvider configuration in ConfigurationProviderHelper.GetConfigurationProviders<IProfilingConfigurationProvider>())
+            {
+                configuration.Configure(Services);
+            }
         }
     }
 }
