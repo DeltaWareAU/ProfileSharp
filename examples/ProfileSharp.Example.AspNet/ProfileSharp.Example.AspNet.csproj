@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\ProfileSharp.AspNetCore\ProfileSharp.AspNetCore.csproj" />
-    <ProjectReference Include="..\src\ProfileSharp.Store.FileStore\ProfileSharp.Store.FileStore.csproj" />
+    <ProjectReference Include="..\..\src\ProfileSharp.AspNetCore\ProfileSharp.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\src\ProfileSharp.Store.FileStore\ProfileSharp.Store.FileStore.csproj" />
   </ItemGroup>
 
 </Project>

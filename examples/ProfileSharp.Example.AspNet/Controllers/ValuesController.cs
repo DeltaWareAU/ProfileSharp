@@ -2,7 +2,7 @@
 using ProfileSharp.Attributes;
 using System.Threading.Tasks;
 
-namespace WebApplication1.Controllers
+namespace ProfileSharp.Example.AspNet.Controllers
 {
     [EnableProfileSharp]
     [Route("api/[controller]")]

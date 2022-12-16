@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WebApplication1
+namespace ProfileSharp.Example.AspNet
 {
     [EnableProfileSharp]
     public interface IWeatherRepository

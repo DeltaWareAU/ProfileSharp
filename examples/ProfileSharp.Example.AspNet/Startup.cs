@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ProfileSharp.Configuration;
 
-namespace WebApplication1
+namespace ProfileSharp.Example.AspNet
 {
     public class Startup
     {

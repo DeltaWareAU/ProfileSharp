@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using ProfileSharp.Attributes;
 
-namespace WebApplication1.Controllers
+namespace ProfileSharp.Example.AspNet.Controllers
 {
     [EnableProfileSharp]
     [ApiController]
