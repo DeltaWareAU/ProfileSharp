@@ -56,5 +56,12 @@ namespace ProfileSharp.NServiceBus
             await _mockingScope.InitiateAsync(executionContext);
             await next.Invoke();
         }
+
+        internal sealed class Register : RegisterStep
+        {
+            public Register() : base(nameof(MockScopeInitializationBehaviour), typeof(MockScopeInitializationBehaviour), "Initializes the Mocking Scope for a Message Handle.")
+            {
+            }
+        }
     }
 }

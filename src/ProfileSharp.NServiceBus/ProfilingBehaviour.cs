@@ -81,5 +81,12 @@ namespace ProfileSharp.NServiceBus
 
             _profilingScope.RegisterStep(executionStep);
         }
+
+        internal sealed class Register : RegisterStep
+        {
+            public Register() : base(nameof(ProfilingBehaviour), typeof(ProfilingBehaviour), "Profiles a Message Handle.")
+            {
+            }
+        }
     }
 }
