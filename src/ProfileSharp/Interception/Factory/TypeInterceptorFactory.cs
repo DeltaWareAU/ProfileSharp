@@ -7,7 +7,7 @@ using System;
 
 namespace ProfileSharp.Interception.Factory
 {
-    internal class TypeInterceptorFactory : IInterceptorFactory
+    internal sealed class TypeInterceptorFactory : IInterceptorFactory
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly ProfileSharpSettings _settings;

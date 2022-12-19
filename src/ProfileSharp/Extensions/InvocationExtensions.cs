@@ -24,7 +24,6 @@ namespace Castle.DynamicProxy
         }
 
         public static bool IsProfileSharpDisabled(this IInvocation invocation)
-            => invocation.TargetType.HasAttribute<DisableProfileSharpAttribute>() ||
-               invocation.MethodInvocationTarget.HasAttribute<DisableProfileSharpAttribute>();
+            => invocation.MethodInvocationTarget.HasAttribute<DisableProfileSharpAttribute>();
     }
 }

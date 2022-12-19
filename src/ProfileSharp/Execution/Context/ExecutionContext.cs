@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ProfileSharp.Execution.Context
@@ -9,7 +10,7 @@ namespace ProfileSharp.Execution.Context
 
         public string MethodName { get; set; } = null!;
 
-        public IReadOnlyDictionary<string, object> Arguments { get; set; } = null!;
+        public IReadOnlyDictionary<string, object?> Arguments { get; set; } = null!;
 
         public override bool Equals(object obj)
         {

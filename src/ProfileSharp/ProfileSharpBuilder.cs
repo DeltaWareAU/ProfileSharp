@@ -18,26 +18,22 @@ namespace ProfileSharp
             _services = services;
         }
 
-        public IProfileSharpBuilder AddMocking(Action<IMockingConfigurationBuilder> optionsAction)
+        public void AddMocking(Action<IMockingConfigurationBuilder> optionsAction)
         {
             MockingConfigurationBuilder configurationBuilder = new MockingConfigurationBuilder(_services);
 
             optionsAction.Invoke(configurationBuilder);
 
             configurationBuilder.Build();
-
-            return this;
         }
 
-        public IProfileSharpBuilder AddProfiling(Action<IProfilingConfigurationBuilder> optionsAction)
+        public void AddProfiling(Action<IProfilingConfigurationBuilder> optionsAction)
         {
             ProfilingConfigurationBuilder configurationBuilder = new ProfilingConfigurationBuilder(_services);
 
             optionsAction.Invoke(configurationBuilder);
 
             configurationBuilder.Build();
-
-            return this;
         }
 
         public void Build()

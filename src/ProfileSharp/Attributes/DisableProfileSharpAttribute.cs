@@ -2,7 +2,10 @@
 
 namespace ProfileSharp.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Method)]
+    /// <summary>
+    /// Disables ProfileSharp for the specific method.
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Method)]
     public sealed class DisableProfileSharpAttribute : Attribute
     {
     }

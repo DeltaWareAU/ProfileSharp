@@ -32,17 +32,15 @@ namespace ProfileSharp.Example.AspNet
 
             services.AddProfileSharp(o =>
             {
-#if PROFILING
                 o.AddProfiling(o =>
                 {
                     o.UseFileStore(@"D:\#temp\ProfilingStore");
                 });
-#elif MOCKING
+
                 o.AddMocking(o =>
                 {
                     o.UseFileStore(@"D:\#temp\ProfilingStore");
                 });
-#endif
             });
         }
 
@@ -69,11 +67,11 @@ namespace ProfileSharp.Example.AspNet
 
             app.UseProfileSharp(c =>
             {
-#if PROFILING
-                c.UseProfiling();
-#elif MOCKING
-                c.UseMocking();
-#endif
+                //#if PROFILING
+                c.EnableProfiling();
+                //#elif MOCKING
+                c.EnableMocking();
+                //#endif
             });
         }
     }

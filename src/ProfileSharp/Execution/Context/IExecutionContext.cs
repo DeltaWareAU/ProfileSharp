@@ -8,6 +8,6 @@ namespace ProfileSharp.Execution.Context
 
         string MethodName { get; }
 
-        IReadOnlyDictionary<string, object> Arguments { get; }
+        IReadOnlyDictionary<string, object?> Arguments { get; }
     }
 }

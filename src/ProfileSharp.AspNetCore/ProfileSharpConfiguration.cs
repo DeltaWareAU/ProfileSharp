@@ -12,10 +12,10 @@ namespace ProfileSharp.AspNetCore
             _settings = settings;
         }
 
-        public void UseProfiling()
+        public void EnableProfiling()
             => _settings.Mode = ProfileSharpMode.Profiling;
 
-        public void UseMocking()
+        public void EnableMocking()
             => _settings.Mode = ProfileSharpMode.Mocking;
 
         public void Disable()

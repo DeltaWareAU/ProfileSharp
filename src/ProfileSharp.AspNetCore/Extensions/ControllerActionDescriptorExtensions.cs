@@ -10,8 +10,7 @@ namespace Microsoft.AspNetCore.Mvc.Controllers
             => !IsDisabled(actionDescriptor) && IsEnabled(actionDescriptor);
 
         private static bool IsDisabled(ControllerActionDescriptor actionDescriptor)
-            => actionDescriptor.ControllerTypeInfo.HasAttribute<DisableProfileSharpAttribute>() ||
-               actionDescriptor.MethodInfo.HasAttribute<DisableProfileSharpAttribute>();
+            => actionDescriptor.MethodInfo.HasAttribute<DisableProfileSharpAttribute>();
 
         private static bool IsEnabled(ControllerActionDescriptor actionDescriptor)
             => actionDescriptor.ControllerTypeInfo.HasAttribute<EnableProfileSharpAttribute>() ||

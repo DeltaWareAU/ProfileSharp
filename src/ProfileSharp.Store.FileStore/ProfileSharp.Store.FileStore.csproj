@@ -1,9 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;net5.0;net6.0;net7.0</TargetFrameworks>
-    <Nullable>enable</Nullable>
-    <Configurations>Debug;Release</Configurations>
+        <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>7.0.0.1-prerelease</Version>
+    <Author>Bradley Clarke</Author>
+    <Company>DeltaWare</Company>
+    <Product>ProfileSharp</Product>
+    <Description>Automate the process of mocking, testing, and profiling your .Net application.</Description>
+    <PackageProjectUrl>https://github.com/DeltaWareAU/ProfileSharp</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/DeltaWareAU/ProfileSharp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Profiling; Mocking; Automated; FileSystem</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageOutputPath>..\..\nuget.packages</PackageOutputPath>
+	<NeutralLanguage>en-AU</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +29,21 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProfileSharp\ProfileSharp.csproj" />
+  </ItemGroup>
+
+		<ItemGroup>
+    <None Include="..\..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <!--<None Include="..\..\nuget_logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>-->
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
