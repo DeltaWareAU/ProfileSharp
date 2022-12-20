@@ -121,3 +121,12 @@ public interface IStudentRepository
 	Task DeleteAsync(Guid studentId);
 }
 ```
+
+## Releases
+
+|Package|Downloads|NuGet|
+|-|-|-|
+|**ProfileSharp**|![](https://img.shields.io/nuget/dt/ProfileSharp?style=for-the-badge)|[![Nuget](https://img.shields.io/nuget/v/ProfileSharp.svg?style=for-the-badge)](https://www.nuget.org/packages/ProfileSharp/)|
+|**ProfileSharp.AspNetCore**|![](https://img.shields.io/nuget/dt/ProfileSharp.AspNetCore?style=for-the-badge)|[![Nuget](https://img.shields.io/nuget/v/ProfileSharp.AspNetCore.svg?style=for-the-badge)](https://www.nuget.org/packages/ProfileSharp.AspNetCore/)|
+|**ProfileSharp.NServiceBus**|![](https://img.shields.io/nuget/dt/ProfileSharp.NServiceBus?style=for-the-badge)|[![Nuget](https://img.shields.io/nuget/v/ProfileSharp.NServiceBus.svg?style=for-the-badge)](https://www.nuget.org/packages/ProfileSharp.NServiceBus/)|
+|**ProfileSharp.Store.FileStore**|![](https://img.shields.io/nuget/dt/ProfileSharp.Store.FileStore?style=for-the-badge)|[![Nuget](https://img.shields.io/nuget/v/ProfileSharp.Store.FileStore.svg?style=for-the-badge)](https://www.nuget.org/packages/ProfileSharp.Store.FileStore/)|
