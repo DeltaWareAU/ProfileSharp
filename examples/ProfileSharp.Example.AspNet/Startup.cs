@@ -28,8 +28,6 @@ namespace ProfileSharp.Example.AspNet
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });
             });
 
-
-
             services.AddProfileSharp(o =>
             {
                 o.AddProfiling(o =>
@@ -67,11 +65,11 @@ namespace ProfileSharp.Example.AspNet
 
             app.UseProfileSharp(c =>
             {
-                //#if PROFILING
+#if PROFILING
                 c.EnableProfiling();
-                //#elif MOCKING
+#elif MOCKING
                 c.EnableMocking();
-                //#endif
+#endif
             });
         }
     }

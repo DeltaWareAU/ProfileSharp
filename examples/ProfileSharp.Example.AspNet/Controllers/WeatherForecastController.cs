@@ -25,6 +25,12 @@ namespace ProfileSharp.Example.AspNet.Controllers
             return Ok(_repository.Get());
         }
 
+        [HttpGet("date")]
+        public IActionResult GetDate()
+        {
+            return Ok(_repository.Date);
+        }
+
         [HttpGet("range/{days}")]
         public IActionResult GetRange(int days)
         {

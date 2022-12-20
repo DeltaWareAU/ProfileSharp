@@ -25,19 +25,23 @@ namespace ProfileSharp.AspNetCore.Filters
         {
             if (_settings.Mode != ProfileSharpMode.Mocking)
             {
+                await next.Invoke();
+
                 return;
             }
 
             ControllerActionDescriptor actionDescriptor = (ControllerActionDescriptor)context.ActionDescriptor;
 
-            if (string.IsNullOrEmpty(actionDescriptor.ControllerTypeInfo.AssemblyQualifiedName))
-            {
-                throw new NotSupportedException($"The target controller {actionDescriptor.ControllerTypeInfo.Name} is not supported by profile sharp as it does not have a {nameof(Type.AssemblyQualifiedName)}.");
-            }
-
             if (!actionDescriptor.IsProfileSharpEnabled())
             {
                 await next.Invoke();
+
+                return;
+            }
+
+            if (string.IsNullOrEmpty(actionDescriptor.ControllerTypeInfo.AssemblyQualifiedName))
+            {
+                throw new NotSupportedException($"The target controller {actionDescriptor.ControllerTypeInfo.Name} is not supported by profile sharp as it does not have a {nameof(Type.AssemblyQualifiedName)}.");
             }
 
             ControllerExecutionContext executionContext = new ControllerExecutionContext

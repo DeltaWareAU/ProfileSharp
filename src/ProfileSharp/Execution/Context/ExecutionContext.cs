@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace ProfileSharp.Execution.Context
 {
@@ -12,9 +10,9 @@ namespace ProfileSharp.Execution.Context
 
         public IReadOnlyDictionary<string, object?> Arguments { get; set; } = null!;
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (!(obj is IExecutionContext context))
+            if (!(obj is ExecutionContext context))
             {
                 return false;
             }
@@ -29,36 +27,10 @@ namespace ProfileSharp.Execution.Context
                 return false;
             }
 
-            var sourceArguments = Arguments.ToArray();
-            var compareArguments = context.Arguments.ToArray();
-
-            for (int i = 0; i < sourceArguments.Length; i++)
-            {
-                var source = sourceArguments[i];
-                var compare = compareArguments[i];
-
-                if (source.Key != compare.Key)
-                {
-                    return false;
-                }
-
-                if (source.Value == null)
-                {
-                    if (compare.Value != null)
-                    {
-                        return false;
-                    }
-
-                    continue;
-                }
-
-                if (source.Value.GetType().IsPrimitive && source.Value.ToString() != compare.Value.ToString())
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return context.ComputeHash() == this.ComputeHash();
         }
+
+        public override int GetHashCode()
+             => this.ComputeHash().GetHashCode();
     }
 }

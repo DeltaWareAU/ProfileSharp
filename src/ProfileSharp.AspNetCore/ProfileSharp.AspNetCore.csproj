@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.1;net5.0;net6.0;net7.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>7.0.0.1-prerelease</Version>
+    <Version>7.0.0.2-prerelease</Version>
     <Author>Bradley Clarke</Author>
     <Company>DeltaWare</Company>
     <Product>ProfileSharp</Product>
@@ -13,7 +13,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/DeltaWareAU/ProfileSharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>Profiling; Mocking; Automated; AspNetCore; Controller; Api; Restful</PackageTags>
+    <PackageTags>Profiling; Mocking; Automated; AspNetCore; HttpClient; Controller; Api; Restful; DependencyInjection</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>

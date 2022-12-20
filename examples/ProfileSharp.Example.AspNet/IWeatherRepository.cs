@@ -8,6 +8,8 @@ namespace ProfileSharp.Example.AspNet
     [EnableProfileSharp]
     public interface IWeatherRepository
     {
+        DateTime Date { get; }
+
         WeatherForecast Get();
         IEnumerable<WeatherForecast> GetRange(int days, object temp = null);
     }
@@ -18,6 +20,8 @@ namespace ProfileSharp.Example.AspNet
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
+
+        public DateTime Date { get; } = DateTime.Now;
 
         public WeatherForecast Get()
         {

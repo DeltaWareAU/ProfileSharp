@@ -1,54 +1,38 @@
 ﻿using Newtonsoft.Json;
 using ProfileSharp.Execution.Context;
 using ProfileSharp.Execution.Scope;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace ProfileSharp.Store.FileStore
 {
-    internal sealed class MockDataFileStore : IMockDataStore
+    internal sealed class MockDataFileStore : FileStore, IMockDataStore
     {
-        private readonly IReadOnlyCollection<IExecutionScopeContext> _mockingScopes;
-
-        public MockDataFileStore(string directory)
+        private readonly JsonSerializer _serializer = JsonSerializer.Create(new JsonSerializerSettings
         {
-            if (string.IsNullOrWhiteSpace(directory))
-            {
-                throw new ArgumentException("Cannot be null, empty or whitespace", nameof(directory));
-            }
+            TypeNameHandling = TypeNameHandling.All
+        });
 
-            if (!Directory.Exists(directory))
-            {
-                throw new DirectoryNotFoundException($"The specified Directory ({directory}) could not be found.");
-            }
-
-            _mockingScopes = LoadMockData(directory).ToArray();
+        public MockDataFileStore(string directory) : base(directory)
+        {
         }
 
         public Task<IExecutionScopeContext?> GetExecutionScopeAsync(IExecutionContext executionContext, CancellationToken cancellationToken = default)
         {
-            IExecutionScopeContext? scope = _mockingScopes.SingleOrDefault(s => s.Steps.First().ExecutionContext.Equals(executionContext));
-
-            return Task.FromResult(scope ?? null);
-        }
-
-        private static IEnumerable<IExecutionScopeContext> LoadMockData(string directory)
-        {
-            JsonSerializer serializer = JsonSerializer.Create(new JsonSerializerSettings
+            return Task.Factory.StartNew(() =>
             {
-                TypeNameHandling = TypeNameHandling.All
-            });
+                string filePath = GetFilePath(executionContext);
 
-            foreach (string filePath in Directory.GetFiles(directory))
-            {
+                if (!File.Exists(filePath))
+                {
+                    return null;
+                }
+
                 using StreamReader fileStream = File.OpenText(filePath);
 
-                yield return (IExecutionScopeContext)serializer.Deserialize(fileStream, typeof(IExecutionScopeContext));
-            }
+                return (IExecutionScopeContext)_serializer.Deserialize(fileStream, typeof(IExecutionScopeContext));
+            }, cancellationToken);
         }
     }
 }

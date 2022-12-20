@@ -26,14 +26,16 @@ namespace ProfileSharp.Scope
 
         public bool TryGetMockExecutionAsync(IExecutionContext executionContext, out IExecutedContext? executedContext)
         {
-            executedContext = null;
+            string contextHash = executionContext.ComputeHash();
 
             // TODO: Arguments need to be matched.
             IExecutionStep? mockExecution = _mockExecutionContext?.Steps
-                .SingleOrDefault(s => s.ExecutionContext.Equals(executionContext));
+                .FirstOrDefault(s => s.ExecutionContext.ComputeHash() == contextHash);
 
             if (mockExecution == null)
             {
+                executedContext = null;
+
                 return false;
             }
 
