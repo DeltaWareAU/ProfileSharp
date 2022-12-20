@@ -1,6 +1,6 @@
 ProfileSharp was built to allow developers to quickly test on their local machines and automate unit tests without manually generating a large amount of mock data. ProfileSharp provides an easy way to collect mock data and enable its use within your domain.
 
->**NOTE:** This is an early proof of concept and will change as it matures.
+>**NOTE:** This is an early proof of concept and could change as it matures.
 
 #### Planned Features
 
@@ -9,6 +9,8 @@ ProfileSharp was built to allow developers to quickly test on their local machin
 
 #### Drawbacks
 
+* Mock data can only be collected at runtime.
+* If the signature of a mocked method changes it will no longer be compatible with preivously profiled mocking data.
 * Random data is not supported in unit tests. (This may be resolved with an Attribute or alternative means in the future)
 * Mocking is currently only supported within an AspNet runtime.
 * Constructors, Events, and Properties are presently not supported.
