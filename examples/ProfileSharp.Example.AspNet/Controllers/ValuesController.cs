@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProfileSharp.Attributes;
 using System.Threading.Tasks;
 
 namespace ProfileSharp.Example.AspNet.Controllers

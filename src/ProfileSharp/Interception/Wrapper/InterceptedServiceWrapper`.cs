@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace ProfileSharp.Interception.Service
+namespace ProfileSharp.Interception.Wrapper
 {
-    internal sealed class InterceptedService<T> : IInterceptedService, IAsyncDisposable
+    internal sealed class InterceptedServiceWrapper<T> : IInterceptedServiceWrapper, IAsyncDisposable
     {
         public object ServiceInstance { get; }
 
-        public InterceptedService(T serviceInstance)
+        public InterceptedServiceWrapper(T serviceInstance)
         {
             ServiceInstance = serviceInstance ?? throw new ArgumentNullException(nameof(serviceInstance));
         }

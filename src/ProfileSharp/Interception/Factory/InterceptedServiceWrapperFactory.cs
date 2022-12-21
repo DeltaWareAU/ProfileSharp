@@ -1,21 +1,21 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ProfileSharp.Interception.Service;
+using ProfileSharp.Interception.Wrapper;
 using System;
 
 namespace ProfileSharp.Interception.Factory
 {
-    internal sealed class InterceptedServiceFactory
+    internal sealed class InterceptedServiceWrapperFactory
     {
         private readonly ServiceDescriptor _descriptor;
         private readonly IServiceProvider _provider;
 
-        public InterceptedServiceFactory(ServiceDescriptor descriptor, IServiceProvider provider)
+        public InterceptedServiceWrapperFactory(ServiceDescriptor descriptor, IServiceProvider provider)
         {
             _descriptor = descriptor;
             _provider = provider;
         }
 
-        public IInterceptedService Build()
+        public IInterceptedServiceWrapper Build()
         {
             object serviceInstance;
 
@@ -36,9 +36,9 @@ namespace ProfileSharp.Interception.Factory
                 throw new NotSupportedException();
             }
 
-            Type interceptedServiceType = InterceptedServiceHelper.GetInterceptedServiceType(_descriptor.ServiceType);
+            Type interceptedServiceType = InterceptedServiceWrapperHelper.GetInterceptedServiceType(_descriptor.ServiceType);
 
-            return (IInterceptedService)Activator.CreateInstance(interceptedServiceType, serviceInstance);
+            return (IInterceptedServiceWrapper)Activator.CreateInstance(interceptedServiceType, serviceInstance);
         }
     }
 }

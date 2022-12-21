@@ -13,9 +13,9 @@ namespace ProfileSharp.NServiceBus
     internal sealed class MockScopeInitializationBehaviour : Behavior<IInvokeHandlerContext>
     {
         private readonly IMockingScope _mockingScope;
-        private readonly ProfileSharpSettings _settings;
+        private readonly IProfileSharpSettings _settings;
 
-        public MockScopeInitializationBehaviour(IMockingScope mockingScope, ProfileSharpSettings settings)
+        public MockScopeInitializationBehaviour(IMockingScope mockingScope, IProfileSharpSettings settings)
         {
             _settings = settings;
             _mockingScope = mockingScope;

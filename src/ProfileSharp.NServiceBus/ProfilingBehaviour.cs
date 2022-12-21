@@ -15,9 +15,9 @@ namespace ProfileSharp.NServiceBus
     internal sealed class ProfilingBehaviour : Behavior<IInvokeHandlerContext>
     {
         private readonly IProfilingScope _profilingScope;
-        private readonly ProfileSharpSettings _settings;
+        private readonly IProfileSharpSettings _settings;
 
-        public ProfilingBehaviour(IProfilingScope profilingScope, ProfileSharpSettings settings)
+        public ProfilingBehaviour(IProfilingScope profilingScope, IProfileSharpSettings settings)
         {
             _settings = settings;
             _profilingScope = profilingScope;

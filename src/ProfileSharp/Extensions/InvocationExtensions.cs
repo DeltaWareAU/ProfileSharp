@@ -1,4 +1,4 @@
-﻿using ProfileSharp.Attributes;
+﻿using ProfileSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;

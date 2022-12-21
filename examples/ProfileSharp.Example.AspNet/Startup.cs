@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ProfileSharp.Configuration;
+using ProfileSharp.Enums;
 
 namespace ProfileSharp.Example.AspNet
 {
@@ -28,17 +29,16 @@ namespace ProfileSharp.Example.AspNet
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });
             });
 
-            services.AddProfileSharp(o =>
+            services.AddProfileSharp(c =>
             {
-                o.AddProfiling(o =>
-                {
-                    o.UseFileStore(@"D:\#temp\ProfilingStore");
-                });
+                c.AddProfiling(o => o.UseFileStore(@"D:\#temp\ProfilingStore"));
+                c.AddMocking(o => o.UseFileStore(@"D:\#temp\ProfilingStore"));
 
-                o.AddMocking(o =>
-                {
-                    o.UseFileStore(@"D:\#temp\ProfilingStore");
-                });
+                //#if PROFILING
+                c.SetMode(ProfileSharpMode.Profiling);
+                //#elif MOCKING
+                c.SetMode(ProfileSharpMode.Mocking);
+                //#endif
             });
         }
 
@@ -61,15 +61,6 @@ namespace ProfileSharp.Example.AspNet
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
-
-            app.UseProfileSharp(c =>
-            {
-#if PROFILING
-                c.EnableProfiling();
-#elif MOCKING
-                c.EnableMocking();
-#endif
             });
         }
     }

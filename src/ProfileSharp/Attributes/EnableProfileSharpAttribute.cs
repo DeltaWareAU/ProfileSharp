@@ -1,6 +1,7 @@
 ﻿using System;
 
-namespace ProfileSharp.Attributes
+// ReSharper disable once CheckNamespace
+namespace ProfileSharp
 {
     /// <summary>
     /// Enables ProfileSharp for the specified, interface, class or method.

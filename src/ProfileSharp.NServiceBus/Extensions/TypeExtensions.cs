@@ -1,4 +1,4 @@
-﻿using ProfileSharp.Attributes;
+﻿using ProfileSharp;
 
 // ReSharper disable once CheckNamespace
 namespace System

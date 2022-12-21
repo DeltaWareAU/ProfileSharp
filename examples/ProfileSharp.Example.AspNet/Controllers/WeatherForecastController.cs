@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ProfileSharp.Attributes;
 
 namespace ProfileSharp.Example.AspNet.Controllers
 {

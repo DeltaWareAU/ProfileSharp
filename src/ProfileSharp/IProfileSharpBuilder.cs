@@ -1,4 +1,5 @@
 ﻿using ProfileSharp.Configuration;
+using ProfileSharp.Enums;
 using System;
 
 namespace ProfileSharp
@@ -16,5 +17,7 @@ namespace ProfileSharp
         /// </summary>
         /// <param name="optionsAction">The options used to configure Profiling.</param>
         void AddProfiling(Action<IProfilingConfigurationBuilder> optionsAction);
+
+        void SetMode(ProfileSharpMode mode);
     }
 }

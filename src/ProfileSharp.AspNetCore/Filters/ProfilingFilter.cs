@@ -18,13 +18,13 @@ namespace ProfileSharp.AspNetCore.Filters
         private readonly Stopwatch _invocationStopwatch = new Stopwatch();
 
         private readonly IProfilingScope _profilingScope;
-        private readonly ProfileSharpSettings _settings;
+        private readonly IProfileSharpSettings _settings;
 
         private ExecutionStep? _controllerExecutionStep;
 
         private ExecutedContext? _executedContext;
 
-        public ProfilingFilter(IProfilingScope profilingScope, ProfileSharpSettings settings)
+        public ProfilingFilter(IProfilingScope profilingScope, IProfileSharpSettings settings)
         {
             _profilingScope = profilingScope;
             _settings = settings;

@@ -25,42 +25,23 @@ In your `Startup.cs` call the following methods.
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-	services.AddProfileSharp(o =>
+	services.AddProfileSharp(config =>
 	{
-		o.AddProfiling(o =>
-		{
-			o.UseFileStore(@"D:\#temp\ProfilingStore");
-		});
+		config.AddProfiling(o => o.UseFileStore(@"D:\#temp\ProfilingStore"));
+		config.AddMocking(o => o.UseFileStore(@"D:\#temp\ProfilingStore"));
 
-		o.AddMocking(o =>
-		{
-			o.UseFileStore(@"D:\#temp\ProfilingStore");
-		});
-	});
-}
-
-public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-{
-	app.UseProfileSharp(config =>
-	{
 		if(env.IsDevelopment())
 		{
 			// Enable Mocking Mode, when this mode is set ProfileSharp will mock the
 			// specified parts of your domain.
-			config.EnableMocking();
+			config.SetMode(ProfileSharpMode.Mocking);
 		}
 		else if(env.IsStaging())
 		{
 			// Enable Profiling Mode, when this mode is set ProfileSharp will profile the
 			// specified parts of your domain.
-			config.EnableProfiling();
+			config.SetMode(ProfileSharpMode.Profiling);
 		}
-		else
-		{
-			// Disable ProfileSharp, Mocking and Profiling will not occur.
-			config.Disable();
-		}
-	
 	});
 }
 

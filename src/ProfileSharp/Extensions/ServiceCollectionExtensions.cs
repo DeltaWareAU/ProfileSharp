@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using ProfileSharp.Interception.Factory;
-using ProfileSharp.Interception.Service;
+using ProfileSharp.Interception.Wrapper;
 using System;
 
 namespace ProfileSharp.Extensions
@@ -27,8 +27,8 @@ namespace ProfileSharp.Extensions
 
         private static ServiceDescriptor GetInterceptedService(ServiceDescriptor descriptor)
             => new ServiceDescriptor(
-                InterceptedServiceHelper.GetInterceptedServiceType(descriptor.ServiceType),
-                p => new InterceptedServiceFactory(descriptor, p).Build(),
+                InterceptedServiceWrapperHelper.GetInterceptedServiceType(descriptor.ServiceType),
+                p => new InterceptedServiceWrapperFactory(descriptor, p).Build(),
                 descriptor.Lifetime);
     }
 }

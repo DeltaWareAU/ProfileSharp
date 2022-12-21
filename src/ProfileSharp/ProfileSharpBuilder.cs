@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using ProfileSharp.Configuration;
+using ProfileSharp.Enums;
 using ProfileSharp.Extensions;
 using ProfileSharp.Interception.Factory;
 using ProfileSharp.Settings;
@@ -36,10 +37,18 @@ namespace ProfileSharp
             configurationBuilder.Build();
         }
 
+        public void SetMode(ProfileSharpMode mode)
+        {
+            _services.AddSingleton<IProfileSharpSettings>(new ProfileSharpSettings
+            {
+                Mode = mode
+            });
+        }
+
         public void Build()
         {
             _services.TryAddScoped<IInterceptorFactory, TypeInterceptorFactory>();
-            _services.TryAddSingleton<ProfileSharpSettings>();
+            _services.TryAddSingleton<IProfileSharpSettings, ProfileSharpSettings>();
 
             CreateServiceInterceptors(_services);
         }

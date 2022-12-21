@@ -13,9 +13,9 @@ namespace ProfileSharp.AspNetCore.Filters
     internal sealed class MockScopeInitializationFilter : IAsyncActionFilter
     {
         private readonly IMockingScope _profilingScope;
-        private readonly ProfileSharpSettings _settings;
+        private readonly IProfileSharpSettings _settings;
 
-        public MockScopeInitializationFilter(IMockingScope profilingScope, ProfileSharpSettings settings)
+        public MockScopeInitializationFilter(IMockingScope profilingScope, IProfileSharpSettings settings)
         {
             _profilingScope = profilingScope;
             _settings = settings;
